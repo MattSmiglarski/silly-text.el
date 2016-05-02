@@ -289,7 +289,7 @@
     (widenize-region (point-min) (point-max))))
 
 (defun script-string (string)
-  "Widen the contents of STRING."
+  "Scriptify the contents of STRING."
   (interactive "M")
   (apply #'concat
          (mapcar (lambda (x)
@@ -298,14 +298,14 @@
                  (string-to-list string))))
 
 (defun script-region (start end)
-  "Widen the contents between START and END."
+  "Scriptify the contents between START and END."
   (interactive "*r")
   (let ((text (buffer-substring start end)))
     (delete-region start end)
     (insert (script-string text))))
 
 (defun script-buffer (buffer)
-  "Widen the contents of BUFFER."
+  "Scriptify the contents of BUFFER."
   (interactive "*b")
   (with-current-buffer buffer
     (script-region (point-min) (point-max))))
